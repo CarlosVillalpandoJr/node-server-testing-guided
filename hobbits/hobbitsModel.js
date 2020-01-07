@@ -8,8 +8,9 @@ module.exports = {
   findById,
 };
 
+// this should resolve to the new hobbit
 async function insert(hobbit) {
-  return null;
+  return db('hobbits').insert(hobbit);
 }
 
 async function update(id, changes) {

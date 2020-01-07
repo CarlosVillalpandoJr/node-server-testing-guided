@@ -1,9 +1,16 @@
 const request = require('supertest')
 
 const server = require('./server.js')  
+const db = require('../data/dbConfig.js')
 
 // test suite for the entire server
 describe('the server', () => {
+
+    // runs before each test in suite
+    beforeEach(async () => {
+        await db('hobbits').truncate()
+    })
+
     describe('GET /', () => {
 
         xit('should run the testing env', () => {

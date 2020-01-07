@@ -10,7 +10,10 @@ module.exports = {
 
 // this should resolve to the new hobbit
 async function insert(hobbit) {
-  return db('hobbits').insert(hobbit);
+  return db('hobbits').insert(hobbit)
+    .then(ids => {
+      return db('hobbits').where({ id: ids[0] }).first()
+    })
 }
 
 async function update(id, changes) {

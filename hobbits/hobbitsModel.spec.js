@@ -19,6 +19,15 @@ describe('The Hobbit Model', () => {
             expect(hobbits.length).toBe(1)
             expect(hobbits[0].name).toBe('frodo')
         })
+
+        it('should resolve to the newly created hobbit', async () => {
+            // test setup
+            const hobbitData = { name: 'cholo' }
+            const hobbit = await Hobbits.insert(hobbitData);
+
+            // assertion
+            expect(hobbit).toEqual({ id: 1, name: 'cholo' })
+        })
     })
 
 })
